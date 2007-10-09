@@ -14,7 +14,7 @@ if ( $?TM_PROJECT_DIRECTORY ) then
     osascript -e 'tell app "SystemUIServer" to activate' -e 'tell app "TextMate" to activate'
     echo "Remote Project Downloaded"
   else
-    echo 'No remote counterpart defined. Please set $WHERE_I_CAME_FROM to [user@][host:]/path in this project.'
+    echo 'No remote counterpart defined. Please set $WHERE_I_CAME_FROM to [user@][host:]/path in this project. See the "Help" in the Remote Project bundle for details.'
   endif
 else
   echo 'This command is meant to be run from a Project.'

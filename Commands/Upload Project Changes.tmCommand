@@ -12,7 +12,7 @@ if ( $?TM_PROJECT_DIRECTORY ) then
     rsync -au $TM_PROJECT_DIRECTORY/ $WHERE_I_CAME_FROM
     echo "Project Changes Uploaded"
   else
-    echo 'No remote counterpart defined. Please set $WHERE_I_CAME_FROM to [user@][host:]/path in this project.'
+    echo 'No remote counterpart defined. Please set $WHERE_I_CAME_FROM to [user@][host:]/path in this project. See the "Help" in the Remote Project bundle for details.'
   endif
 else
   echo 'This command is meant to be run from a Project.'

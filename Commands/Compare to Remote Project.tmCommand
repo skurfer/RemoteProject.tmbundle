@@ -17,7 +17,7 @@ if [[ ! -z "$TM_PROJECT_DIRECTORY" ]]; then
     echo "### Newer Local Files ###"
     rsync -aun $TM_PROJECT_DIRECTORY/ $WHERE_I_CAME_FROM | sed -e 's/\(.*\)/    \1/'
   else
-    echo 'No remote counterpart defined. Please set $WHERE_I_CAME_FROM to [user@][host:]/path in this project.'
+    echo 'No remote counterpart defined. Please set `$WHERE_I_CAME_FROM` to `[user@][host:]/path` in this project. See the "Help" in the Remote Project bundle for details.'
   fi
 else
   echo 'This command is meant to be run from a Project.'
