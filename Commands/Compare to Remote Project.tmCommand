@@ -5,21 +5,24 @@
 	<key>beforeRunningCommand</key>
 	<string>saveModifiedFiles</string>
 	<key>command</key>
-	<string>#!/bin/tcsh
+	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
+html_header "Remote vs. Local"
 
-if ( $?TM_PROJECT_DIRECTORY ) then
-  if ( $?WHERE_I_CAME_FROM ) then
+if [[ ! -z "$TM_PROJECT_DIRECTORY" ]]; then
+  if [[ ! -z "$WHERE_I_CAME_FROM" ]]; then
     echo "### Newer Remote Files ###" | Markdown.pl
     rsync -aun $WHERE_I_CAME_FROM/ $TM_PROJECT_DIRECTORY | sed -e 's/\(.*\)/    \1/' | Markdown.pl
     echo
     echo "### Newer Local Files ###" | Markdown.pl
-    rsync -aun $TM_PROJECT_DIRECTORY/ $WHERE_I_CAME_FROM | sed -e 's/\(.*\)/    \1/' | Markdown.pl
+    rsync -aun $TM_PROJECT_DIRECTORY/ $WHERE_I_CAME_FROM | sed -e 's/\(.*\)/    \1/' | Markdown.pl    
   else
     echo 'No remote counterpart defined. Please set $WHERE_I_CAME_FROM to [user@][host:]/path in this project.' | Markdown.pl
-  endif
+  fi
 else
   echo 'This command is meant to be run from a Project.' | Markdown.pl
-endif
+fi
+
+html_footer
 </string>
 	<key>input</key>
 	<string>none</string>
