@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveModifiedFiles</string>
+	<key>command</key>
+	<string>#!/bin/tcsh
+
+if ( $?TM_PROJECT_DIRECTORY ) then
+  if ( $?WHERE_I_CAME_FROM ) then
+    rsync -au $WHERE_I_CAME_FROM/ $TM_PROJECT_DIRECTORY
+    # have TextMate rescan project files
+    osascript -e 'tell app "SystemUIServer" to activate' -e 'tell app "TextMate" to activate'
+    echo "Remote Project Downloaded"
+  else
+    echo 'No remote counterpart defined. Please set $WHERE_I_CAME_FROM to [user@][host:]/path in this project.'
+  endif
+else
+  echo 'This command is meant to be run from a Project.'
+endif
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^@p</string>
+	<key>name</key>
+	<string>Get Remote Project</string>
+	<key>output</key>
+	<string>showAsTooltip</string>
+	<key>uuid</key>
+	<string>0FCA25AE-5FE3-4327-8582-F944DCE3AFD9</string>
+</dict>
+</plist>

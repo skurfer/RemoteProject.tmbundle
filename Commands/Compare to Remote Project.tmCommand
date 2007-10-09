@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveModifiedFiles</string>
+	<key>command</key>
+	<string>#!/bin/tcsh
+
+if ( $?TM_PROJECT_DIRECTORY ) then
+  if ( $?WHERE_I_CAME_FROM ) then
+    echo "### Newer Remote Files ###" | Markdown.pl
+    rsync -aun $WHERE_I_CAME_FROM/ $TM_PROJECT_DIRECTORY | sed -e 's/\(.*\)/    \1/' | Markdown.pl
+    echo
+    echo "### Newer Local Files ###" | Markdown.pl
+    rsync -aun $TM_PROJECT_DIRECTORY/ $WHERE_I_CAME_FROM | sed -e 's/\(.*\)/    \1/' | Markdown.pl
+  else
+    echo 'No remote counterpart defined. Please set $WHERE_I_CAME_FROM to [user@][host:]/path in this project.' | Markdown.pl
+  endif
+else
+  echo 'This command is meant to be run from a Project.' | Markdown.pl
+endif
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^@p</string>
+	<key>name</key>
+	<string>Compare to Remote Project</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>uuid</key>
+	<string>5609DA56-DDEC-466F-9A1C-C92D642D15AC</string>
+</dict>
+</plist>
