@@ -8,19 +8,21 @@
 	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
 html_header "Remote vs. Local"
 
+( # group all commands so output can be piped to Markdown
 if [[ ! -z "$TM_PROJECT_DIRECTORY" ]]; then
   if [[ ! -z "$WHERE_I_CAME_FROM" ]]; then
-    echo "### Newer Remote Files ###" | Markdown.pl
-    rsync -aun $WHERE_I_CAME_FROM/ $TM_PROJECT_DIRECTORY | sed -e 's/\(.*\)/    \1/' | Markdown.pl
+    echo "### Newer Remote Files ###"
+    rsync -aun $WHERE_I_CAME_FROM/ $TM_PROJECT_DIRECTORY | sed -e 's/\(.*\)/    \1/'
     echo
-    echo "### Newer Local Files ###" | Markdown.pl
-    rsync -aun $TM_PROJECT_DIRECTORY/ $WHERE_I_CAME_FROM | sed -e 's/\(.*\)/    \1/' | Markdown.pl    
+    echo "### Newer Local Files ###"
+    rsync -aun $TM_PROJECT_DIRECTORY/ $WHERE_I_CAME_FROM | sed -e 's/\(.*\)/    \1/'
   else
-    echo 'No remote counterpart defined. Please set $WHERE_I_CAME_FROM to [user@][host:]/path in this project.' | Markdown.pl
+    echo 'No remote counterpart defined. Please set $WHERE_I_CAME_FROM to [user@][host:]/path in this project.'
   fi
 else
-  echo 'This command is meant to be run from a Project.' | Markdown.pl
+  echo 'This command is meant to be run from a Project.'
 fi
+) | Markdown.pl
 
 html_footer
 </string>
