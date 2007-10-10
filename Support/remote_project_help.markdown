@@ -53,7 +53,7 @@ Here are two ways to turn a directory on a remote machine into a local TextMate 
             touch local_copy/blah.txt
             mate local_copy
 
-      2. Set `WHERE_I_CAME_FROM` in the project to `user@server:/remote/path/`
+      2. Set `TM_REMOTE_PROJECT` in the project to `user@server:/remote/path/`
       3. Click on `blah.txt` to open it (the current version of TextMate requires a file to be open before you can run a command)
       4. Run the "Get Remote Project" command (⌃⌘P → 2)
       5. Watch your files appear in the drawer
@@ -71,7 +71,7 @@ Here are two ways to turn a directory on a remote machine into a local TextMate 
 
             mate local_copy
 
-      3. Set `WHERE_I_CAME_FROM` in the project to `user@server:/remote/path/`
+      3. Set `TM_REMOTE_PROJECT` in the project to `user@server:/remote/path/`
       4. Save the project
 
 The first way is more fun.

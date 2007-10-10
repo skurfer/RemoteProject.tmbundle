@@ -10,14 +10,14 @@ html_header "Remote vs. Local"
 
 ( # group all commands so output can be piped to Markdown
 if [[ ! -z "$TM_PROJECT_DIRECTORY" ]]; then
-  if [[ ! -z "$WHERE_I_CAME_FROM" ]]; then
+  if [[ ! -z "$TM_REMOTE_PROJECT" ]]; then
     echo "### Newer Remote Files ###"
-    rsync -aun $WHERE_I_CAME_FROM/ $TM_PROJECT_DIRECTORY | sed -e 's/\(.*\)/    \1/'
+    rsync -aun $TM_REMOTE_PROJECT/ $TM_PROJECT_DIRECTORY | sed -e 's/\(.*\)/    \1/'
     echo
     echo "### Newer Local Files ###"
-    rsync -aun $TM_PROJECT_DIRECTORY/ $WHERE_I_CAME_FROM | sed -e 's/\(.*\)/    \1/'
+    rsync -aun $TM_PROJECT_DIRECTORY/ $TM_REMOTE_PROJECT | sed -e 's/\(.*\)/    \1/'
   else
-    echo 'No remote counterpart defined. Please set `$WHERE_I_CAME_FROM` to `[user@][host:]/path` in this project. See the "Help" in the Remote Project bundle for details.'
+    echo 'No remote counterpart defined. Please set `$TM_REMOTE_PROJECT` to `[user@][host:]/path` in this project. See the "Help" in the Remote Project bundle for details.'
   fi
 else
   echo 'This command is meant to be run from a Project.'

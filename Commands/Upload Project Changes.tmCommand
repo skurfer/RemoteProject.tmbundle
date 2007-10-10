@@ -8,11 +8,11 @@
 	<string>#!/bin/tcsh
 
 if ( $?TM_PROJECT_DIRECTORY ) then
-  if ( $?WHERE_I_CAME_FROM ) then
-    rsync -au $TM_PROJECT_DIRECTORY/ $WHERE_I_CAME_FROM
+  if ( $?TM_REMOTE_PROJECT ) then
+    rsync -au $TM_PROJECT_DIRECTORY/ $TM_REMOTE_PROJECT
     echo "Project Changes Uploaded"
   else
-    echo 'No remote counterpart defined. Please set $WHERE_I_CAME_FROM to [user@][host:]/path in this project. See the "Help" in the Remote Project bundle for details.'
+    echo 'No remote counterpart defined. Please set $TM_REMOTE_PROJECT to [user@][host:]/path in this project. See the "Help" in the Remote Project bundle for details.'
   endif
 else
   echo 'This command is meant to be run from a Project.'
