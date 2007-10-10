@@ -1,6 +1,12 @@
 ## About This Bundle
 
-The Problem: You want to work with files in a TextMate project from the local filesystem (for speed, Subversion compatibility, and other reasons), but the files you're working on are useless unless they're on some remote machine. This is most common with web based projects where the code only works on a sever that has been configured in a particular way.
+### The Problem
+
+You want to work with files in a TextMate project on the local filesystem (for speed, Subversion compatibility, and other reasons), but the files you're working on are useless unless they're on some remote machine. This is most common with web based projects where the code only works on a sever that has been configured in a particular way.
+
+### Who This Bundle Is For
+
+This bundle is meant to support a workflow where all (or almost all) changes are made locally using TextMate, while all (or almost all) viewing/running/testing of those changes will be done on a remote machine (such as a web server).
 
 ## Available Commands
 
@@ -8,13 +14,19 @@ The Problem: You want to work with files in a TextMate project from the local fi
 
 This command will save all open files and push any local changes to the remote server.
 
+It is listed first because it will be the most often used.
+
 ### Get Remote Project
 
-This command will save all open files and pull any remote changes from the remote server.
+This command will save all open files and pull any changes from the remote server.
+
+Generally, you should only need to run this once. After a project is pulled down, you can make all changes locally and use "Upload Project Changes" to push changes to the remote server.
 
 ### Compare to Remote Project
 
-This command will save all open files and tell you what differs between the local and remote copy of the project directory. No changes are made on either machine.
+This command will save all open files and tell you what differs between the local and remote copy of the project directory. Other than saving files locally, no changes are made on either machine.
+
+This is a good way to verify that both copies are identical before you start making changes. In particular, you should make sure nothing has been changed on the remote end before making changes locally and copying them over.
 
 ### Help
 
@@ -64,16 +76,21 @@ Here are two ways to turn a directory on a remote machine into a local TextMate 
 
 The first way is more fun.
 
+## Keyboard Shortcut
+
+The commands in this bundle all share the same key equivalent: ⌃⌘P. According to the manual, project related shortcuts should use ⌃⌘, but this has not been strictly followed. There are other commands using ⌃⌘P and since they have a more specific scope than these "remote project" commands, they will take precedence in those scopes. If this becomes a problem for you, I encourage you to contact those bundle developers that have ignored the Manual's conventions.
+
 ## Warnings
 
 ### Deleted Files
 
-If you delete a file from your project in one location, the deletion won't be replicated. You need to either remove the file in both places manually, or if using Subversion `svn update` the other end after the removal has been committed to the repository. There is a `--delete` option in `rsync`, but I consider it too dangerous to be on by default.
+If you delete a file from your project in one location, the deletion won't be replicated. You need to either remove the file in both places manually, or if using Subversion `svn update` the other end after the removal has been committed to the repository. There is a `--delete` option in `rsync`, but I consider it too dangerous to enable by default. (It doesn't remove files that were deleted from the source end. It removes any files from the destination end that aren't present on the source end, which could simply be new files on the destination end.)
 
 ### Subversion
 
-`rsync` seems to handle `.svn` directories just fine. Make sure they're the same version.
+If you want to use this bundle to push/pull a Subversion working copy, `rsync` seems to handle this just fine. **Just make sure the working copies are kept in the same format on the remote machine as they are on your machine.** Generally, this means running the same version of the `svn` client in both places. For example, if you are using Subversion 1.4 on your local machine and run `svn update`, then push the updated copy to a remote machine running Subversion 1.3, you will no longer be able to use `svn` on the remote machine to manipulate that working copy (until it is upgraded).
 
-## Keyboard Shortcut
+Some people may with to forgo the "Upload Project Changes" command and instead use `svn update` to move changes from one copy to the other. That could work in some cases, but…
 
-The commands in this bundle all share the same key equivalent: ⌃⌘P. According to the manual, project related shortcuts should use ⌃⌘, but I don't think this has been strictly followed which made it hard to find something. There are other commands using ⌃⌘P and since they have a more specific scope than these "remote project" commands, they will win in those scopes.
+  * Changes have to be committed on one side before they can be used to update the other. Many people don't like to commit changes unless they are known to work, and in this context, changes have to be pushed to the remote machine and tested before that can be determined.
+  * You would have to keep a connection open to the remote machine to run `svn` commands there.
