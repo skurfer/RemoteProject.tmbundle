@@ -2,7 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>mainMenu</key>
+	<key>contactEmailRot13</key>
+  <string>ebo@fxhesre.pbz</string>
+  <key>contactName</key>
+  <string>Rob McBroom</string>
+  <key>description</key>
+  <string>This bundle is meant to support a workflow where all (or almost all) changes are made locally using TextMate, while all (or almost all) viewing/running/testing of those changes will be done on a remote machine (such as a web server).</string>
+  <key>mainMenu</key>
 	<dict>
 		<key>items</key>
 		<array>
