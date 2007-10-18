@@ -9,7 +9,9 @@
 
 if ( $?TM_PROJECT_DIRECTORY ) then
   if ( $?TM_REMOTE_PROJECT ) then
-    rsync -au $TM_PROJECT_DIRECTORY/ $TM_REMOTE_PROJECT
+    # escape spaces for the remote end
+    set ESCAPED_REMOTE=`echo $TM_REMOTE_PROJECT | sed -e 's/ /\\\ /g'`
+    rsync -au "$TM_PROJECT_DIRECTORY/" "$ESCAPED_REMOTE"
     echo "Project Changes Uploaded"
   else
     echo 'No remote counterpart defined. Please set $TM_REMOTE_PROJECT to [user@][host:]/path in this project. See the "Help" in the Remote Project bundle for details.'

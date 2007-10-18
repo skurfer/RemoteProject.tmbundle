@@ -9,7 +9,9 @@
 
 if ( $?TM_PROJECT_DIRECTORY ) then
   if ( $?TM_REMOTE_PROJECT ) then
-    rsync -au $TM_REMOTE_PROJECT/ $TM_PROJECT_DIRECTORY
+    # escape spaces for the remote end
+    set ESCAPED_REMOTE=`echo $TM_REMOTE_PROJECT | sed -e 's/ /\\\ /g'`
+    rsync -au "$ESCAPED_REMOTE/" "$TM_PROJECT_DIRECTORY"
     # have TextMate rescan project files
     osascript -e 'tell app "SystemUIServer" to activate' -e 'tell app "TextMate" to activate'
     echo "Remote Project Downloaded"
