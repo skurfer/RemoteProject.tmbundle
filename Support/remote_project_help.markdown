@@ -43,7 +43,7 @@ This bundle relies on `rsync`. `rsync` is installed by default under Mac OS X, b
 ## Getting Started
 
 Here are two ways to turn a directory on a remote machine into a local TextMate project:  
-(Note the trailing '/' on the `rsync` "source" path. It matters. Also note that `rsync` can work between two local directories, so your "remote" copy could be on the same machine, or could be on a remote filesystem that you mount via AFP, Samba, NFS, etc.)
+(Keep in mind that `rsync` can work between two local directories, so your "remote" copy could be on the same machine, or could be on a remote filesystem that you mount via AFP, Samba, NFS, etc.)
 
   * Create the project and get the files
 
@@ -60,7 +60,8 @@ Here are two ways to turn a directory on a remote machine into a local TextMate 
       6. Close and delete `blah.txt`
       7. Save the project
 
-  * Get the files and create the project
+  * Get the files and create the project  
+    (Note the trailing '/' on the `rsync` "source" path. It matters.)
 
       1. Make a local copy
 
