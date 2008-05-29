@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>contactEmailRot13</key>
-  <string>ebo@fxhesre.pbz</string>
-  <key>contactName</key>
-  <string>Rob McBroom</string>
-  <key>description</key>
-  <string>This bundle is meant to support a workflow where all (or almost all) changes are made locally using TextMate, while all (or almost all) viewing/running/testing of those changes will be done on a remote machine (such as a web server).</string>
-  <key>mainMenu</key>
+	<string>ebo@fxhesre.pbz</string>
+	<key>contactName</key>
+	<string>Rob McBroom</string>
+	<key>description</key>
+	<string>This bundle is meant to support a workflow where all (or almost all) changes are made locally using TextMate, while all (or almost all) viewing/running/testing of those changes will be done on a remote machine (such as a web server).</string>
+	<key>mainMenu</key>
 	<dict>
 		<key>items</key>
 		<array>
 			<string>CCD6E2FF-1B5F-4216-91D2-FD96A1729786</string>
+			<string>97250FA6-8967-4BA4-B982-EABCD0876247</string>
 			<string>0FCA25AE-5FE3-4327-8582-F944DCE3AFD9</string>
 			<string>5609DA56-DDEC-466F-9A1C-C92D642D15AC</string>
 			<string>------------------------------------</string>
+			<string>C014F35E-5199-4EC4-B953-C79EDF727402</string>
 		</array>
 		<key>submenus</key>
 		<dict/>
@@ -25,8 +27,10 @@
 	<key>ordering</key>
 	<array>
 		<string>CCD6E2FF-1B5F-4216-91D2-FD96A1729786</string>
+		<string>97250FA6-8967-4BA4-B982-EABCD0876247</string>
 		<string>0FCA25AE-5FE3-4327-8582-F944DCE3AFD9</string>
 		<string>5609DA56-DDEC-466F-9A1C-C92D642D15AC</string>
+		<string>C014F35E-5199-4EC4-B953-C79EDF727402</string>
 	</array>
 	<key>uuid</key>
 	<string>B140379E-DAC2-4D1E-98F4-7CD607891EFD</string>

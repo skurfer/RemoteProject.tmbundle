@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveModifiedFiles</string>
+	<key>command</key>
+	<string>#!/bin/tcsh
+
+if ( $?TM_PROJECT_DIRECTORY ) then
+  if ( $?TM_REMOTE_PROJECT ) then
+    # escape spaces for the remote end
+    set ESCAPED_REMOTE=`echo $TM_REMOTE_PROJECT | sed -e 's/ /\\\ /g'`
+    rsync -au --delete "$TM_PROJECT_DIRECTORY/" "$ESCAPED_REMOTE"
+    echo "Project Changes Uploaded"
+  else
+    echo 'No remote counterpart defined. Please set $TM_REMOTE_PROJECT to [user@][host:]/path in this project. See the "Help" in the Remote Project bundle for details.'
+  endif
+else
+  echo 'This command is meant to be run from a Project.'
+endif
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^@p</string>
+	<key>name</key>
+	<string>Upload Project Changes (Destructive)</string>
+	<key>output</key>
+	<string>showAsTooltip</string>
+	<key>uuid</key>
+	<string>97250FA6-8967-4BA4-B982-EABCD0876247</string>
+</dict>
+</plist>
