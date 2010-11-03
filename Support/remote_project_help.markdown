@@ -59,7 +59,7 @@ Here are two ways to turn a directory on a remote machine into a local TextMate 
 
       2. Set `TM_REMOTE_PROJECT` in the project to `user@server:/remote/path/`
       3. Click on `blah.txt` to open it (the current version of TextMate requires a file to be open before you can run a command)
-      4. Run the "Get Remote Project" command (⌃⌘P → 2)
+      4. Run the "Get Remote Project" command (⌃⌘P → 3)
       5. Watch your files appear in the drawer
       6. Close and delete `blah.txt`
       7. Save the project
